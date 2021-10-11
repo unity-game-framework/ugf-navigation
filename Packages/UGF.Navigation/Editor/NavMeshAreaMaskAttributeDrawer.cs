@@ -6,9 +6,9 @@ using UnityEngine;
 namespace UGF.Navigation.Editor
 {
     [CustomPropertyDrawer(typeof(NavMeshAreaMaskAttribute), true)]
-    internal class NavMeshAreaMaskPropertyDrawer : PropertyDrawerTyped<NavMeshAreaMaskAttribute>
+    internal class NavMeshAreaMaskAttributeDrawer : PropertyDrawerTyped<NavMeshAreaMaskAttribute>
     {
-        public NavMeshAreaMaskPropertyDrawer() : base(SerializedPropertyType.Integer)
+        public NavMeshAreaMaskAttributeDrawer() : base(SerializedPropertyType.Integer)
         {
         }
 

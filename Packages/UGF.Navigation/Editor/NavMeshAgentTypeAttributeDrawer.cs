@@ -7,9 +7,9 @@ using UnityEngine.AI;
 namespace UGF.Navigation.Editor
 {
     [CustomPropertyDrawer(typeof(NavMeshAgentTypeAttribute), true)]
-    internal class NavMeshAgentTypePropertyDrawer : PropertyDrawerTyped<NavMeshAgentTypeAttribute>
+    internal class NavMeshAgentTypeAttributeDrawer : PropertyDrawerTyped<NavMeshAgentTypeAttribute>
     {
-        public NavMeshAgentTypePropertyDrawer() : base(SerializedPropertyType.Integer)
+        public NavMeshAgentTypeAttributeDrawer() : base(SerializedPropertyType.Integer)
         {
         }
 
