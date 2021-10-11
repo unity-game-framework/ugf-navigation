@@ -1,0 +1,16 @@
+{
+    "name": "UGF.Navigation.Runtime.Tests",
+    "rootNamespace": "",
+    "references": [
+        "GUID:92e74000a2573094a9d252bfedc4817e"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

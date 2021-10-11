@@ -1,0 +1,19 @@
+{
+    "name": "UGF.Navigation.Editor.Tests",
+    "rootNamespace": "",
+    "references": [
+        "GUID:92e74000a2573094a9d252bfedc4817e",
+        "GUID:ef815debd3f00dd4b987ac15a56c0f58"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
