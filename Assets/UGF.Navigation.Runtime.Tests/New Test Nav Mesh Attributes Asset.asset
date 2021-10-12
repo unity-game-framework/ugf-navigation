@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: New Test Nav Mesh Attributes Asset
   m_EditorClassIdentifier: 
   m_agentType: 1
-  m_areaMask: 13
+  m_areaMask: 24
+  m_area: 3
