@@ -15,8 +15,22 @@ namespace UGF.Navigation.Editor
         protected override void OnDrawProperty(Rect position, SerializedProperty serializedProperty, GUIContent label)
         {
             string[] names = GameObjectUtility.GetNavMeshAreaNames();
+            string[] labels = new string[32];
 
-            serializedProperty.intValue = EditorGUI.MaskField(position, label, serializedProperty.intValue, names);
+            for (int i = 0; i < labels.Length; i++)
+            {
+                labels[i] = $"Area {i}";
+            }
+
+            for (int i = 0; i < names.Length; i++)
+            {
+                string name = names[i];
+                int value = GameObjectUtility.GetNavMeshAreaFromName(name);
+
+                labels[value] = name;
+            }
+
+            serializedProperty.intValue = EditorGUI.MaskField(position, label, serializedProperty.intValue, labels);
         }
     }
 }

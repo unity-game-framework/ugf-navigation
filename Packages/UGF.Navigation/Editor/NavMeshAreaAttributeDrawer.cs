@@ -15,14 +15,18 @@ namespace UGF.Navigation.Editor
         protected override void OnDrawProperty(Rect position, SerializedProperty serializedProperty, GUIContent label)
         {
             string[] names = GameObjectUtility.GetNavMeshAreaNames();
+            int[] values = new int[names.Length];
             var labels = new GUIContent[names.Length];
 
             for (int i = 0; i < names.Length; i++)
             {
-                labels[i] = new GUIContent(names[i]);
+                string name = names[i];
+
+                values[i] = GameObjectUtility.GetNavMeshAreaFromName(name);
+                labels[i] = new GUIContent(name);
             }
 
-            serializedProperty.intValue = EditorGUI.Popup(position, label, serializedProperty.intValue, labels);
+            serializedProperty.intValue = EditorGUI.IntPopup(position, label, serializedProperty.intValue, labels, values);
         }
     }
 }
