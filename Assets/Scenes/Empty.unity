@@ -149,17 +149,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1355868887}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3023c663e33452887cef9a570a85ae3, type: 3}
+  m_Script: {fileID: 11500000, guid: 7c0765ca29a944ff9e96145535709d1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_bounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 5, y: 5, z: 5}
+    m_Extent: {x: 0, y: 0, z: 0}
   m_agentType: 0
   m_areaMask: 0
   m_layerMask:
     serializedVersion: 2
-    m_Bits: 2147483647
+    m_Bits: 0
   m_collectGeometry: 0
   m_data: {fileID: 0}
 --- !u!4 &1355868889
