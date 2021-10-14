@@ -53,6 +53,8 @@ namespace UGF.Navigation.Runtime.Tests
             }
 
             m_data = NavMeshBuilder.BuildNavMeshData(NavMesh.GetSettingsByID(m_agentType), sources, m_bounds, transform.position, transform.rotation);
+            m_data.hideFlags = HideFlags.DontSave;
+
             m_instance = NavMesh.AddNavMeshData(m_data, transform.position, transform.rotation);
         }
 
