@@ -13,6 +13,7 @@ namespace UGF.Navigation.Runtime.Tests
         [NavMeshArea]
         [SerializeField] private int m_area;
         [SerializeField] private LayerMask m_layerMask;
+        [SerializeField] private bool m_collect;
         [SerializeField] private NavMeshCollectGeometry m_collectGeometry = NavMeshCollectGeometry.RenderMeshes;
         [SerializeField] private NavMeshData m_data;
         [SerializeField] private List<NavMeshBuildSourceComponent> m_sources = new List<NavMeshBuildSourceComponent>();
@@ -22,6 +23,7 @@ namespace UGF.Navigation.Runtime.Tests
         public int AgentType { get { return m_agentType; } set { m_agentType = value; } }
         public int Area { get { return m_area; } set { m_area = value; } }
         public LayerMask LayerMask { get { return m_layerMask; } set { m_layerMask = value; } }
+        public bool Collect { get { return m_collect; } set { m_collect = value; } }
         public NavMeshCollectGeometry CollectGeometry { get { return m_collectGeometry; } set { m_collectGeometry = value; } }
         public NavMeshData Data { get { return m_data; } set { m_data = value; } }
         public List<NavMeshBuildSourceComponent> Sources { get { return m_sources; } }
@@ -40,7 +42,10 @@ namespace UGF.Navigation.Runtime.Tests
             var sources = new List<NavMeshBuildSource>();
             var markups = new List<NavMeshBuildMarkup>();
 
-            // NavMeshBuilder.CollectSources(NavigationUtility.GetWorldBounds(m_bounds, transform.position, transform.localRotation, transform.localScale), m_layerMask, m_collectGeometry, m_areaMask, markups, sources);
+            if (m_collect)
+            {
+                NavMeshBuilder.CollectSources(NavigationUtility.GetWorldBounds(m_bounds, transform.position, transform.localRotation, transform.localScale), m_layerMask, m_collectGeometry, m_area, markups, sources);
+            }
 
             foreach (NavMeshBuildSourceComponent source in m_sources)
             {
