@@ -18,6 +18,7 @@ namespace UGF.Navigation.Runtime.Tests
         [SerializeField] private NavMeshData m_data;
         [SerializeField] private List<NavMeshSourceComponent> m_sources = new List<NavMeshSourceComponent>();
         [SerializeField] private List<NavMeshMarkupComponent> m_markups = new List<NavMeshMarkupComponent>();
+        [SerializeField] private List<NavMeshLinkComponent> m_links = new List<NavMeshLinkComponent>();
 
         public Bounds Bounds { get { return m_bounds; } set { m_bounds = value; } }
         public int AgentType { get { return m_agentType; } set { m_agentType = value; } }
@@ -28,8 +29,10 @@ namespace UGF.Navigation.Runtime.Tests
         public NavMeshData Data { get { return m_data; } set { m_data = value; } }
         public List<NavMeshSourceComponent> Sources { get { return m_sources; } }
         public List<NavMeshMarkupComponent> Markups { get { return m_markups; } }
+        public List<NavMeshLinkComponent> Links { get { return m_links; } }
 
         private NavMeshDataInstance m_instance;
+        private List<NavMeshLinkInstance> m_linkInstances = new List<NavMeshLinkInstance>();
 
         [ContextMenu("Build", false, 2000)]
         public void Build()
@@ -61,6 +64,11 @@ namespace UGF.Navigation.Runtime.Tests
             m_data.hideFlags = HideFlags.DontSave;
 
             m_instance = NavMesh.AddNavMeshData(m_data, transform.position, transform.rotation);
+
+            foreach (NavMeshLinkComponent link in m_links)
+            {
+                m_linkInstances.Add(NavMesh.AddLink(link.Build()));
+            }
         }
 
         [ContextMenu("Clear", false, 2000)]
@@ -70,9 +78,16 @@ namespace UGF.Navigation.Runtime.Tests
             {
                 NavMesh.RemoveNavMeshData(m_instance);
 
+                foreach (NavMeshLinkInstance instance in m_linkInstances)
+                {
+                    NavMesh.RemoveLink(instance);
+                }
+
                 DestroyImmediate(m_data);
 
                 m_data = null;
+                m_instance = default;
+                m_linkInstances.Clear();
             }
         }
 
