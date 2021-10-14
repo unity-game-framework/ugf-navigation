@@ -16,8 +16,8 @@ namespace UGF.Navigation.Runtime.Tests
         [SerializeField] private bool m_collect;
         [SerializeField] private NavMeshCollectGeometry m_collectGeometry = NavMeshCollectGeometry.RenderMeshes;
         [SerializeField] private NavMeshData m_data;
-        [SerializeField] private List<NavMeshBuildSourceComponent> m_sources = new List<NavMeshBuildSourceComponent>();
-        [SerializeField] private List<NavMeshBuildMarkupComponent> m_markups = new List<NavMeshBuildMarkupComponent>();
+        [SerializeField] private List<NavMeshSourceComponent> m_sources = new List<NavMeshSourceComponent>();
+        [SerializeField] private List<NavMeshMarkupComponent> m_markups = new List<NavMeshMarkupComponent>();
 
         public Bounds Bounds { get { return m_bounds; } set { m_bounds = value; } }
         public int AgentType { get { return m_agentType; } set { m_agentType = value; } }
@@ -26,8 +26,8 @@ namespace UGF.Navigation.Runtime.Tests
         public bool Collect { get { return m_collect; } set { m_collect = value; } }
         public NavMeshCollectGeometry CollectGeometry { get { return m_collectGeometry; } set { m_collectGeometry = value; } }
         public NavMeshData Data { get { return m_data; } set { m_data = value; } }
-        public List<NavMeshBuildSourceComponent> Sources { get { return m_sources; } }
-        public List<NavMeshBuildMarkupComponent> Markups { get { return m_markups; } }
+        public List<NavMeshSourceComponent> Sources { get { return m_sources; } }
+        public List<NavMeshMarkupComponent> Markups { get { return m_markups; } }
 
         private NavMeshDataInstance m_instance;
 
@@ -47,12 +47,12 @@ namespace UGF.Navigation.Runtime.Tests
                 NavMeshBuilder.CollectSources(NavigationUtility.GetWorldBounds(m_bounds, transform.position, transform.localRotation, transform.localScale), m_layerMask, m_collectGeometry, m_area, markups, sources);
             }
 
-            foreach (NavMeshBuildSourceComponent source in m_sources)
+            foreach (NavMeshSourceComponent source in m_sources)
             {
                 sources.Add(source.Build());
             }
 
-            foreach (NavMeshBuildMarkupComponent markup in m_markups)
+            foreach (NavMeshMarkupComponent markup in m_markups)
             {
                 markups.Add(markup.Build());
             }

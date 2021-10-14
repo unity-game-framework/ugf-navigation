@@ -3,8 +3,8 @@ using UnityEngine.AI;
 
 namespace UGF.Navigation.Runtime
 {
-    [AddComponentMenu("Unity Game Framework/Navigation/NavMesh Build Source MeshFilter")]
-    public class NavMeshBuildSourceMeshFilterComponent : NavMeshBuildSourceComponent
+    [AddComponentMenu("Unity Game Framework/Navigation/NavMesh Source MeshFilter", 2000)]
+    public class NavMeshSourceMeshFilterComponent : NavMeshSourceComponent
     {
         [SerializeField] private MeshFilter m_meshFilter;
 

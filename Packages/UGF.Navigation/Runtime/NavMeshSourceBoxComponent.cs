@@ -3,8 +3,8 @@ using UnityEngine.AI;
 
 namespace UGF.Navigation.Runtime
 {
-    [AddComponentMenu("Unity Game Framework/Navigation/NavMesh Build Source Modifier Box", 2000)]
-    public class NavMeshBuildSourceModifierBoxComponent : NavMeshBuildSourceComponent
+    [AddComponentMenu("Unity Game Framework/Navigation/NavMesh Source Box", 2000)]
+    public class NavMeshSourceBoxComponent : NavMeshSourceComponent
     {
         [SerializeField] private Vector3 m_center;
         [SerializeField] private Vector3 m_size = Vector3.one;
@@ -17,16 +17,16 @@ namespace UGF.Navigation.Runtime
             return new NavMeshBuildSource
             {
                 area = Area,
-                shape = NavMeshBuildSourceShape.ModifierBox,
-                transform = Matrix4x4.TRS(transform.position + m_center, transform.rotation, Vector3.one),
-                size = new Vector3(m_size.x * transform.localScale.x, m_size.y * transform.localScale.y, m_size.z * transform.localScale.z),
+                shape = NavMeshBuildSourceShape.Box,
+                transform = Matrix4x4.TRS(transform.position + m_center, transform.rotation, transform.localScale),
+                size = m_size,
                 component = this
             };
         }
 
         private void OnDrawGizmos()
         {
-            Gizmos.color = Color.yellow;
+            Gizmos.color = Color.green;
             Gizmos.matrix = transform.localToWorldMatrix;
             Gizmos.DrawWireCube(m_center, m_size);
         }

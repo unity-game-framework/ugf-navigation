@@ -4,8 +4,8 @@ using UnityEngine.AI;
 
 namespace UGF.Navigation.Runtime
 {
-    [AddComponentMenu("Unity Game Framework/Navigation/NavMesh Build Markup", 2000)]
-    public class NavMeshBuildMarkupComponent : BuilderComponent<NavMeshBuildMarkup>
+    [AddComponentMenu("Unity Game Framework/Navigation/NavMesh Markup", 2000)]
+    public class NavMeshMarkupComponent : BuilderComponent<NavMeshBuildMarkup>
     {
         [SerializeField] private bool m_overrideArea;
         [NavMeshArea]

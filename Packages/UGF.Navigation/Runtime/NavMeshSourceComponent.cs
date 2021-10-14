@@ -4,7 +4,7 @@ using UnityEngine.AI;
 
 namespace UGF.Navigation.Runtime
 {
-    public abstract class NavMeshBuildSourceComponent : BuilderComponent<NavMeshBuildSource>
+    public abstract class NavMeshSourceComponent : BuilderComponent<NavMeshBuildSource>
     {
         [NavMeshArea]
         [SerializeField] private int m_area;

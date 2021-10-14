@@ -4,8 +4,8 @@ using UnityEngine.AI;
 
 namespace UGF.Navigation.Runtime
 {
-    [AddComponentMenu("Unity Game Framework/Navigation/NavMesh Build Source Terrain", 2000)]
-    public class NavMeshBuildSourceTerrainComponent : NavMeshBuildSourceComponent
+    [AddComponentMenu("Unity Game Framework/Navigation/NavMesh Source Terrain", 2000)]
+    public class NavMeshSourceTerrainComponent : NavMeshSourceComponent
     {
         [SerializeField] private Terrain m_terrain;
 
