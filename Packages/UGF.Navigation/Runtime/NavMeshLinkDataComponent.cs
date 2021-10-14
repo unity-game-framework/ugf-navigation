@@ -21,7 +21,7 @@ namespace UGF.Navigation.Runtime
 
             NavMeshLinkData data = m_data.Build();
 
-            m_instance = NavMesh.AddLink(data);
+            m_instance = NavMesh.AddLink(data, transform.position, transform.rotation);
         }
 
         public bool Remove()

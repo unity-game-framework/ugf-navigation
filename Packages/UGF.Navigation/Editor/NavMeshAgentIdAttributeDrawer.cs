@@ -6,10 +6,10 @@ using UnityEngine.AI;
 
 namespace UGF.Navigation.Editor
 {
-    [CustomPropertyDrawer(typeof(NavMeshAgentTypeAttribute), true)]
-    internal class NavMeshAgentTypeAttributeDrawer : PropertyDrawerTyped<NavMeshAgentTypeAttribute>
+    [CustomPropertyDrawer(typeof(NavMeshAgentIdAttribute), true)]
+    internal class NavMeshAgentIdAttributeDrawer : PropertyDrawerTyped<NavMeshAgentIdAttribute>
     {
-        public NavMeshAgentTypeAttributeDrawer() : base(SerializedPropertyType.Integer)
+        public NavMeshAgentIdAttributeDrawer() : base(SerializedPropertyType.Integer)
         {
         }
 

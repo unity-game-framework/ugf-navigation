@@ -1,5 +1,4 @@
-﻿using System;
-using UGF.Builder.Runtime;
+﻿using UGF.Builder.Runtime;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -10,7 +9,7 @@ namespace UGF.Navigation.Runtime
     {
         [NavMeshArea]
         [SerializeField] private int m_area;
-        [NavMeshAgentType]
+        [NavMeshAgentId]
         [SerializeField] private int m_agentType;
         [SerializeField] private Vector3 m_start;
         [SerializeField] private Vector3 m_end = Vector3.forward;

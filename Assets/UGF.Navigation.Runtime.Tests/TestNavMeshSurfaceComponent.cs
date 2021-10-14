@@ -8,8 +8,8 @@ namespace UGF.Navigation.Runtime.Tests
     public class TestNavMeshSurfaceComponent : MonoBehaviour
     {
         [SerializeField] private Bounds m_bounds;
-        [NavMeshAgentType]
-        [SerializeField] private int m_agentType;
+        [NavMeshAgentId]
+        [SerializeField] private int m_agentId;
         [NavMeshArea]
         [SerializeField] private int m_area;
         [SerializeField] private LayerMask m_layerMask;
@@ -21,7 +21,7 @@ namespace UGF.Navigation.Runtime.Tests
         [SerializeField] private List<NavMeshLinkComponent> m_links = new List<NavMeshLinkComponent>();
 
         public Bounds Bounds { get { return m_bounds; } set { m_bounds = value; } }
-        public int AgentType { get { return m_agentType; } set { m_agentType = value; } }
+        public int AgentId { get { return m_agentId; } set { m_agentId = value; } }
         public int Area { get { return m_area; } set { m_area = value; } }
         public LayerMask LayerMask { get { return m_layerMask; } set { m_layerMask = value; } }
         public bool Collect { get { return m_collect; } set { m_collect = value; } }
@@ -60,7 +60,7 @@ namespace UGF.Navigation.Runtime.Tests
                 sources.Add(source.Build());
             }
 
-            m_data = NavMeshBuilder.BuildNavMeshData(NavMesh.GetSettingsByID(m_agentType), sources, m_bounds, transform.position, transform.rotation);
+            m_data = NavMeshBuilder.BuildNavMeshData(NavMesh.GetSettingsByID(m_agentId), sources, m_bounds, transform.position, transform.rotation);
             m_data.hideFlags = HideFlags.DontSave;
 
             m_instance = NavMesh.AddNavMeshData(m_data, transform.position, transform.rotation);
