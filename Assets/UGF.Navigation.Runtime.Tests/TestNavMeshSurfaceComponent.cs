@@ -45,19 +45,19 @@ namespace UGF.Navigation.Runtime.Tests
             var sources = new List<NavMeshBuildSource>();
             var markups = new List<NavMeshBuildMarkup>();
 
+            foreach (NavMeshMarkupComponent markup in m_markups)
+            {
+                markups.Add(markup.Build());
+            }
+
             if (m_collect)
             {
-                NavMeshBuilder.CollectSources(NavigationUtility.GetWorldBounds(m_bounds, transform.position, transform.localRotation, transform.localScale), m_layerMask, m_collectGeometry, m_area, markups, sources);
+                NavMeshBuilder.CollectSources(NavMeshUtility.GetWorldBounds(m_bounds, transform.position, transform.localRotation, transform.localScale), m_layerMask, m_collectGeometry, m_area, markups, sources);
             }
 
             foreach (NavMeshSourceComponent source in m_sources)
             {
                 sources.Add(source.Build());
-            }
-
-            foreach (NavMeshMarkupComponent markup in m_markups)
-            {
-                markups.Add(markup.Build());
             }
 
             m_data = NavMeshBuilder.BuildNavMeshData(NavMesh.GetSettingsByID(m_agentType), sources, m_bounds, transform.position, transform.rotation);

@@ -2,7 +2,7 @@
 
 namespace UGF.Navigation.Runtime
 {
-    public static class NavigationUtility
+    public static class NavMeshUtility
     {
         public static Bounds GetWorldBounds(Bounds bounds, Vector3 position, Quaternion rotation, Vector3 scale)
         {
