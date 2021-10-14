@@ -1,4 +1,5 @@
-﻿using UGF.Builder.Runtime;
+﻿using System;
+using UGF.Builder.Runtime;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -29,14 +30,22 @@ namespace UGF.Navigation.Runtime
         {
             return new NavMeshLinkData
             {
-                area = 0,
-                agentTypeID = 0,
-                startPosition = Vector3.zero,
-                endPosition = Vector3.zero,
-                width = 0F,
-                costModifier = 0F,
-                bidirectional = false
+                area = m_area,
+                agentTypeID = m_agentType,
+                startPosition = transform.TransformPoint(m_start),
+                endPosition = transform.TransformPoint(m_end),
+                width = m_width,
+                costModifier = m_cost,
+                bidirectional = m_bidirectional
             };
+        }
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.magenta;
+            Gizmos.matrix = transform.localToWorldMatrix;
+            Gizmos.DrawCube(m_start, Vector3.one * 0.1F);
+            Gizmos.DrawCube(m_end, Vector3.one * 0.1F);
         }
     }
 }
