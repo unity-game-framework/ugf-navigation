@@ -12,6 +12,12 @@
     "precompiledReferences": [],
     "autoReferenced": true,
     "defineConstraints": [],
-    "versionDefines": [],
+    "versionDefines": [
+        {
+            "name": "com.unity.modules.terrain",
+            "expression": "",
+            "define": "UGF_MODULE_TERRAIN_ENABLED"
+        }
+    ],
     "noEngineReferences": false
 }
