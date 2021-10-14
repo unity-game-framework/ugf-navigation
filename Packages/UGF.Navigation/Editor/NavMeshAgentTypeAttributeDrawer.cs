@@ -16,6 +16,7 @@ namespace UGF.Navigation.Editor
         protected override void OnDrawProperty(Rect position, SerializedProperty serializedProperty, GUIContent label)
         {
             var labels = new GUIContent[NavMesh.GetSettingsCount()];
+            int[] values = new int[labels.Length];
 
             for (int i = 0; i < labels.Length; i++)
             {
@@ -23,9 +24,10 @@ namespace UGF.Navigation.Editor
                 string name = NavMesh.GetSettingsNameFromID(settings.agentTypeID);
 
                 labels[i] = new GUIContent(name);
+                values[i] = settings.agentTypeID;
             }
 
-            serializedProperty.intValue = EditorGUI.Popup(position, label, serializedProperty.intValue, labels);
+            serializedProperty.intValue = EditorGUI.IntPopup(position, label, serializedProperty.intValue, labels, values);
         }
     }
 }
