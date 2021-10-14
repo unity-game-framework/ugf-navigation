@@ -19,7 +19,7 @@ namespace UGF.Navigation.Runtime
         {
             if (m_instance != null) throw new InvalidOperationException("NavMesh Data already added.");
 
-            m_instance = NavMesh.AddNavMeshData(m_data);
+            m_instance = NavMesh.AddNavMeshData(m_data, transform.position, transform.rotation);
         }
 
         public bool Remove()
