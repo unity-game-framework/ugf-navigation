@@ -50,7 +50,7 @@ namespace UGF.Navigation.Runtime
         {
             NavMeshBuildSettings settings = NavMesh.GetSettingsByID(m_agentId);
             List<NavMeshBuildSource> sources = CollectSources();
-            var bounds = new Bounds(m_center, m_size);
+            var bounds = new Bounds(m_center, transform.TransformVector(m_size));
 
             NavMeshData data = NavMeshBuilder.BuildNavMeshData(settings, sources, bounds, transform.position, transform.rotation);
 
