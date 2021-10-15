@@ -7,5 +7,9 @@ namespace UGF.Navigation.Editor
     [EditorTool(ComponentEditorToolUtility.EDIT_SIZE_NAME, typeof(NavMeshBuilderComponent))]
     internal class NavMeshBuilderComponentEditorToolSize : ComponentBoundsSizeEditorTool
     {
+        public NavMeshBuilderComponentEditorToolSize()
+        {
+            Handle.SetColor(NavMeshEditorUtility.GizmoWireColor);
+        }
     }
 }
