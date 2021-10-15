@@ -9,6 +9,7 @@ namespace UGF.Navigation.Editor
     {
         protected NavMeshBuilderComponentEditorToolSize() : base("m_center", "m_size")
         {
+            Handle.SetColor(NavMeshEditorUtility.GizmoWireColor);
         }
     }
 }

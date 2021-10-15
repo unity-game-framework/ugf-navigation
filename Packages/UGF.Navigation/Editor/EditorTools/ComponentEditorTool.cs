@@ -34,7 +34,7 @@ namespace UGF.Navigation.Editor.EditorTools
         {
             base.OnToolGUI(window);
 
-            if (m_serializedObject != null)
+            if (m_serializedObject != null && m_component != null)
             {
                 OnToolGUI();
             }
