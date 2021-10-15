@@ -804,7 +804,7 @@ MonoBehaviour:
   m_bounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 15, y: 5, z: 15}
-  m_agentType: 0
+  m_agentId: 0
   m_area: 0
   m_layerMask:
     serializedVersion: 2
@@ -820,6 +820,7 @@ MonoBehaviour:
   - {fileID: 6562305097396133470}
   - {fileID: 425242213}
   m_markups: []
+  m_links: []
 --- !u!4 &6562305098379498845
 Transform:
   m_ObjectHideFlags: 0
