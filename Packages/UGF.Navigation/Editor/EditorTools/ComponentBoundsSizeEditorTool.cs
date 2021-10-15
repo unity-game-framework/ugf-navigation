@@ -11,9 +11,13 @@ namespace UGF.Navigation.Editor.EditorTools
         public string CenterPropertyName { get; }
         public string SizePropertyName { get; }
         public BoxBoundsHandle Handle { get; } = new BoxBoundsHandle();
-        public override GUIContent toolbarIcon { get { return EditorGUIUtility.IconContent("EditCollider"); } }
+        public override GUIContent toolbarIcon { get { return ComponentEditorToolUtility.EditSizeContent; } }
 
-        protected ComponentBoundsSizeEditorTool(string centerPropertyName, string sizePropertyName)
+        public ComponentBoundsSizeEditorTool() : this("m_center", "m_size")
+        {
+        }
+
+        public ComponentBoundsSizeEditorTool(string centerPropertyName, string sizePropertyName)
         {
             if (string.IsNullOrEmpty(centerPropertyName)) throw new ArgumentException("Value cannot be null or empty.", nameof(centerPropertyName));
             if (string.IsNullOrEmpty(sizePropertyName)) throw new ArgumentException("Value cannot be null or empty.", nameof(sizePropertyName));

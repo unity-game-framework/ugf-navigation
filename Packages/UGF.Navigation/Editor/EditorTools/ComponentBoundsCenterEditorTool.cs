@@ -8,7 +8,11 @@ namespace UGF.Navigation.Editor.EditorTools
     internal class ComponentBoundsCenterEditorTool : ComponentEditorTool
     {
         public string CenterPropertyName { get; }
-        public override GUIContent toolbarIcon { get { return EditorGUIUtility.IconContent("MoveTool"); } }
+        public override GUIContent toolbarIcon { get { return ComponentEditorToolUtility.EditCenterContent; } }
+
+        public ComponentBoundsCenterEditorTool() : this("m_center")
+        {
+        }
 
         public ComponentBoundsCenterEditorTool(string centerPropertyName)
         {
