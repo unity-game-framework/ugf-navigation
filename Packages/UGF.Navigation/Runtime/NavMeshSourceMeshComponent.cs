@@ -16,7 +16,7 @@ namespace UGF.Navigation.Runtime
             {
                 area = Area,
                 shape = NavMeshBuildSourceShape.Mesh,
-                transform = Matrix4x4.TRS(transform.position, transform.rotation, transform.localScale),
+                transform = transform.localToWorldMatrix,
                 size = m_mesh.bounds.size,
                 component = this,
                 sourceObject = m_mesh

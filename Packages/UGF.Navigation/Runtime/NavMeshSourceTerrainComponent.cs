@@ -20,7 +20,7 @@ namespace UGF.Navigation.Runtime
             {
                 area = Area,
                 shape = NavMeshBuildSourceShape.Terrain,
-                transform = Matrix4x4.TRS(terrainTransform.position, terrainTransform.rotation, terrainTransform.localScale),
+                transform = terrainTransform.localToWorldMatrix,
                 size = terrainData.size,
                 component = this,
                 sourceObject = terrainData

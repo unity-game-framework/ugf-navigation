@@ -18,7 +18,7 @@ namespace UGF.Navigation.Runtime
             {
                 area = Area,
                 shape = NavMeshBuildSourceShape.Box,
-                transform = Matrix4x4.TRS(transform.position + m_center, transform.rotation, transform.localScale),
+                transform = Matrix4x4.TRS(m_center, Quaternion.identity, Vector3.one) * transform.localToWorldMatrix,
                 size = m_size,
                 component = this
             };
@@ -27,8 +27,8 @@ namespace UGF.Navigation.Runtime
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.green;
-            Gizmos.matrix = transform.localToWorldMatrix;
-            Gizmos.DrawWireCube(m_center, m_size);
+            Gizmos.matrix = Matrix4x4.TRS(m_center, Quaternion.identity, Vector3.one) * transform.localToWorldMatrix;
+            Gizmos.DrawWireCube(Vector3.zero, m_size);
         }
     }
 }
