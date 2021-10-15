@@ -8,6 +8,11 @@ namespace UGF.Navigation.Runtime
         {
             Matrix4x4 matrix = Matrix4x4.TRS(position, rotation, scale);
 
+            return GetWorldBounds(bounds, matrix);
+        }
+
+        public static Bounds GetWorldBounds(Bounds bounds, Matrix4x4 matrix)
+        {
             Vector3 center = matrix.MultiplyPoint3x4(bounds.center);
             Vector3 extents = bounds.extents;
 
