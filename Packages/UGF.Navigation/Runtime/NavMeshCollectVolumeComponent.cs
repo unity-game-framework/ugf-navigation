@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -25,6 +26,13 @@ namespace UGF.Navigation.Runtime
             {
                 sources.Add(results[i]);
             }
+        }
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.blue;
+            Gizmos.matrix = transform.localToWorldMatrix;
+            Gizmos.DrawWireCube(m_center, m_size);
         }
     }
 }
