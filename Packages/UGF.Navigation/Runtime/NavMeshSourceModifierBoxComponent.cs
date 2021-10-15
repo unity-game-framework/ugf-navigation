@@ -19,7 +19,7 @@ namespace UGF.Navigation.Runtime
                 area = Area,
                 shape = NavMeshBuildSourceShape.ModifierBox,
                 transform = Matrix4x4.TRS(transform.position + m_center, transform.rotation, Vector3.one),
-                size = new Vector3(m_size.x * transform.localScale.x, m_size.y * transform.localScale.y, m_size.z * transform.localScale.z),
+                size = Vector3.Scale(m_size, transform.localScale),
                 component = this
             };
         }
