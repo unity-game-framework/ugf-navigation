@@ -50,5 +50,15 @@ namespace UGF.Navigation.Editor
                 m_listCollects.DrawGUILayout();
             }
         }
+
+        private bool HasFrameBounds()
+        {
+            return true;
+        }
+
+        private Bounds OnGetFrameBounds()
+        {
+            return NavMeshEditorUtility.InternalGetTargetWorldBounds(target, m_propertyCenter.vector3Value, m_propertySize.vector3Value);
+        }
     }
 }
