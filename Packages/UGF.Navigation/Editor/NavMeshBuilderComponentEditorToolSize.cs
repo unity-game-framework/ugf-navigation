@@ -4,12 +4,8 @@ using UnityEditor.EditorTools;
 
 namespace UGF.Navigation.Editor
 {
-    [EditorTool("Edit Size", typeof(NavMeshBuilderComponent))]
+    [EditorTool(ComponentEditorToolUtility.EDIT_SIZE_NAME, typeof(NavMeshBuilderComponent))]
     internal class NavMeshBuilderComponentEditorToolSize : ComponentBoundsSizeEditorTool
     {
-        protected NavMeshBuilderComponentEditorToolSize() : base("m_center", "m_size")
-        {
-            Handle.SetColor(NavMeshEditorUtility.GizmoWireColor);
-        }
     }
 }

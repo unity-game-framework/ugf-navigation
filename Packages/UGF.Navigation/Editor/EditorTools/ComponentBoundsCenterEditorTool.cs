@@ -21,7 +21,7 @@ namespace UGF.Navigation.Editor.EditorTools
             CenterPropertyName = centerPropertyName;
         }
 
-        protected override void OnToolGUI()
+        protected override void OnToolRepaint()
         {
             using (new SerializedObjectUpdateScope(SerializedObject))
             {

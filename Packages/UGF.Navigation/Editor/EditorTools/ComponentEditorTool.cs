@@ -34,12 +34,12 @@ namespace UGF.Navigation.Editor.EditorTools
         {
             base.OnToolGUI(window);
 
-            if (m_serializedObject != null && m_component != null)
+            if (Event.current.type == EventType.Repaint && m_serializedObject != null && m_component != null)
             {
-                OnToolGUI();
+                OnToolRepaint();
             }
         }
 
-        protected abstract void OnToolGUI();
+        protected abstract void OnToolRepaint();
     }
 }

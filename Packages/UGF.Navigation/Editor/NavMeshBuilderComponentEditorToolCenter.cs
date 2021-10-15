@@ -4,11 +4,8 @@ using UnityEditor.EditorTools;
 
 namespace UGF.Navigation.Editor
 {
-    [EditorTool("Edit Center", typeof(NavMeshBuilderComponent))]
+    [EditorTool(ComponentEditorToolUtility.EDIT_CENTER_NAME, typeof(NavMeshBuilderComponent))]
     internal class NavMeshBuilderComponentEditorToolCenter : ComponentBoundsCenterEditorTool
     {
-        public NavMeshBuilderComponentEditorToolCenter() : base("m_center")
-        {
-        }
     }
 }
