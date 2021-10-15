@@ -9,7 +9,7 @@ namespace UGF.Navigation.Editor
         [DrawGizmo(GizmoType.Selected | GizmoType.InSelectionHierarchy | GizmoType.Active)]
         private static void OnDrawGizmos(NavMeshBuilderComponent component, GizmoType gizmoType)
         {
-            Gizmos.matrix = component.transform.localToWorldMatrix;
+            Gizmos.matrix = Matrix4x4.TRS(component.transform.position, component.transform.rotation, component.transform.localScale);
 
             Gizmos.color = NavMeshEditorUtility.GizmoSolidColor;
             Gizmos.DrawCube(component.Center, component.Size);
