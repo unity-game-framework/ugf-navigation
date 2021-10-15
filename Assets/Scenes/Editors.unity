@@ -249,8 +249,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c685c3e5d19e4aadb1b4bbe280ea9eb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_center: {x: 0.3774598, y: -0.22071248, z: 0.41506007}
-  m_size: {x: 0.3381539, y: 1, z: 1.54172}
+  m_center: {x: -0.54727536, y: -0.22071257, z: -0.07099563}
+  m_size: {x: 0.23708361, y: 0.7011116, z: 1.3779436}
   m_agentId: 0
   m_auto: 0
   m_data: {fileID: 0}

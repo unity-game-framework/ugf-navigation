@@ -38,7 +38,8 @@ namespace UGF.Navigation.Editor
             {
                 EditorIMGUIUtility.DrawScriptProperty(serializedObject);
 
-                EditorGUILayout.EditorToolbarForTarget(new GUIContent("Edit Dimensions"), target);
+                EditorGUILayout.EditorToolbarForTarget(new GUIContent("Edit Bounds"), target);
+                EditorGUILayout.Space(EditorGUIUtility.standardVerticalSpacing);
 
                 EditorGUILayout.PropertyField(m_propertyCenter);
                 EditorGUILayout.PropertyField(m_propertySize);
