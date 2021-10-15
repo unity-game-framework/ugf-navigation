@@ -8,8 +8,10 @@ namespace UGF.Navigation.Runtime
     public class NavMeshDataComponent : MonoBehaviour
     {
         [SerializeField] private NavMeshData m_data;
+        [SerializeField] private bool m_auto;
 
         public NavMeshData Data { get { return m_data; } set { m_data = value; } }
+        public bool Auto { get { return m_auto; } set { m_auto = value; } }
         public NavMeshDataInstance Instance { get { return m_instance ?? throw new ArgumentException("Value not specified."); } }
         public bool HasInstance { get { return m_instance != null; } }
 
@@ -38,7 +40,7 @@ namespace UGF.Navigation.Runtime
 
         private void OnEnable()
         {
-            if (m_instance == null)
+            if (m_auto && m_instance == null)
             {
                 Add();
             }
@@ -46,7 +48,10 @@ namespace UGF.Navigation.Runtime
 
         private void OnDisable()
         {
-            Remove();
+            if (m_auto)
+            {
+                Remove();
+            }
         }
     }
 }
