@@ -12,14 +12,16 @@ namespace UGF.Navigation.Runtime
 
         protected override NavMeshBuildSource OnBuild()
         {
+            Mesh sharedMesh = m_meshFilter.sharedMesh;
+
             return new NavMeshBuildSource
             {
                 area = Area,
                 shape = NavMeshBuildSourceShape.Mesh,
                 transform = transform.localToWorldMatrix,
-                size = m_meshFilter.sharedMesh.bounds.size,
+                size = sharedMesh.bounds.size,
                 component = this,
-                sourceObject = m_meshFilter.sharedMesh
+                sourceObject = sharedMesh
             };
         }
     }

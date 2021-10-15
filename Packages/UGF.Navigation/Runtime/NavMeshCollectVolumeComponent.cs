@@ -15,7 +15,11 @@ namespace UGF.Navigation.Runtime
 
         protected override void OnCollect(ICollection<NavMeshBuildSource> sources)
         {
-            Bounds bounds = NavMeshUtility.GetWorldBounds(new Bounds(m_center, m_size), transform.position, transform.rotation, transform.localScale);
+            Vector3 size = Vector3.Scale(m_size, transform.localScale);
+            var bounds = new Bounds(m_center, size);
+
+            bounds = NavMeshUtility.GetWorldBounds(bounds, transform.position, transform.rotation, transform.localScale);
+
             List<NavMeshBuildMarkup> markups = GetMarkups();
             var results = new List<NavMeshBuildSource>();
 
@@ -25,13 +29,6 @@ namespace UGF.Navigation.Runtime
             {
                 sources.Add(results[i]);
             }
-        }
-
-        private void OnDrawGizmos()
-        {
-            Gizmos.color = Color.blue;
-            Gizmos.matrix = transform.localToWorldMatrix;
-            Gizmos.DrawWireCube(m_center, m_size);
         }
     }
 }

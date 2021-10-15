@@ -23,12 +23,5 @@ namespace UGF.Navigation.Runtime
                 component = this
             };
         }
-
-        private void OnDrawGizmos()
-        {
-            Gizmos.color = Color.yellow;
-            Gizmos.matrix = transform.localToWorldMatrix;
-            Gizmos.DrawWireCube(m_center, m_size);
-        }
     }
 }
