@@ -8,15 +8,19 @@ namespace UGF.Navigation.Runtime
     [AddComponentMenu("Unity Game Framework/Navigation/NavMesh Builder", 2000)]
     public class NavMeshBuilderComponent : MonoBehaviour
     {
-        [SerializeField] private NavMeshDataComponent m_data;
+        [SerializeField] private Vector3 m_center;
+        [SerializeField] private Vector3 m_size = Vector3.one;
         [NavMeshAgentId]
         [SerializeField] private int m_agentId;
         [SerializeField] private bool m_auto;
+        [SerializeField] private NavMeshDataComponent m_data;
         [SerializeField] private List<NavMeshCollectComponent> m_collects = new List<NavMeshCollectComponent>();
 
-        public NavMeshDataComponent Data { get { return m_data; } set { m_data = value; } }
+        public Vector3 Center { get { return m_center; } set { m_center = value; } }
+        public Vector3 Size { get { return m_size; } set { m_size = value; } }
         public int AgentId { get { return m_agentId; } set { m_agentId = value; } }
         public bool Auto { get { return m_auto; } set { m_auto = value; } }
+        public NavMeshDataComponent Data { get { return m_data; } set { m_data = value; } }
         public List<NavMeshCollectComponent> Collects { get { return m_collects; } }
 
         public void Build()
@@ -35,6 +39,10 @@ namespace UGF.Navigation.Runtime
             if (m_data.HasInstance)
             {
                 m_data.Remove();
+
+                Destroy(m_data.Data);
+
+                m_data.Data = null;
             }
         }
 
@@ -42,8 +50,13 @@ namespace UGF.Navigation.Runtime
         {
             NavMeshBuildSettings settings = NavMesh.GetSettingsByID(m_agentId);
             List<NavMeshBuildSource> sources = CollectSources();
+            var bounds = new Bounds(m_center, m_size);
 
-            return NavMeshBuilder.BuildNavMeshData(settings, sources, new Bounds(), transform.position, transform.rotation);
+            NavMeshData data = NavMeshBuilder.BuildNavMeshData(settings, sources, bounds, transform.position, transform.rotation);
+
+            data.name = "NavMeshData";
+
+            return data;
         }
 
         public List<NavMeshBuildSource> CollectSources()
@@ -81,6 +94,13 @@ namespace UGF.Navigation.Runtime
             {
                 Clear();
             }
+        }
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.cyan;
+            Gizmos.matrix = transform.localToWorldMatrix;
+            Gizmos.DrawWireCube(m_center, m_size);
         }
     }
 }
