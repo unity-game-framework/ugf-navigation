@@ -15,8 +15,9 @@ namespace UGF.Navigation.Runtime
 
         protected override void OnCollect(ICollection<NavMeshBuildSource> sources)
         {
+            Vector3 center = Vector3.Scale(m_center, transform.localScale);
             Vector3 size = Vector3.Scale(m_size, transform.localScale);
-            var bounds = new Bounds(m_center, size);
+            var bounds = new Bounds(center, size);
 
             bounds = NavMeshUtility.GetWorldBounds(bounds, transform.position, transform.rotation, transform.localScale);
 
