@@ -18,7 +18,7 @@ namespace UGF.Navigation.Runtime
             {
                 area = Area,
                 shape = NavMeshBuildSourceShape.Box,
-                transform = Matrix4x4.TRS(m_center, Quaternion.identity, Vector3.one) * transform.localToWorldMatrix,
+                transform = transform.localToWorldMatrix * Matrix4x4.TRS(m_center, Quaternion.identity, Vector3.one),
                 size = m_size,
                 component = this
             };
