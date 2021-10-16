@@ -1,6 +1,7 @@
 ﻿using UGF.Navigation.Editor.EditorTools;
 using UGF.Navigation.Runtime;
 using UnityEditor.EditorTools;
+using UnityEngine;
 
 namespace UGF.Navigation.Editor
 {
@@ -9,7 +10,8 @@ namespace UGF.Navigation.Editor
     {
         public NavMeshCollectVolumeComponentEditorToolSize()
         {
-            Handle.SetColor(NavMeshEditorUtility.GizmoWireColor);
+            Handle.handleColor = NavMeshEditorUtility.HandlersControlColor;
+            Handle.wireframeColor = Color.clear;
         }
     }
 }

@@ -1,21 +1,33 @@
-﻿using UGF.Navigation.Runtime;
+﻿using System;
+using UGF.Navigation.Runtime;
 using UnityEditor;
-using UnityEngine;
+using UnityEditor.EditorTools;
 
 namespace UGF.Navigation.Editor
 {
     internal static class NavMeshBuilderComponentGizmos
     {
-        [DrawGizmo(GizmoType.Selected | GizmoType.InSelectionHierarchy | GizmoType.Active)]
-        private static void OnDrawGizmos(NavMeshBuilderComponent component, GizmoType gizmoType)
+        [DrawGizmo(GizmoType.Active)]
+        private static void OnDrawGizmosActive(NavMeshBuilderComponent component, GizmoType gizmoType)
         {
-            Gizmos.matrix = Matrix4x4.TRS(component.transform.position, component.transform.rotation, component.transform.localScale);
+            if (component == null) throw new ArgumentNullException(nameof(component));
 
-            Gizmos.color = NavMeshEditorUtility.GizmoSolidColor;
-            Gizmos.DrawCube(component.Center, component.Size);
+            if (ToolManager.activeToolType == typeof(NavMeshBuilderComponentEditorToolSize))
+            {
+                NavMeshEditorInternalUtility.DrawGizmoBoundsBox(component.transform, component.Center, component.Size);
+            }
+        }
 
-            Gizmos.color = NavMeshEditorUtility.GizmoWireColor;
-            Gizmos.DrawWireCube(component.Center, component.Size);
+        [DrawGizmo(GizmoType.InSelectionHierarchy)]
+        private static void OnDrawGizmosSelected(NavMeshBuilderComponent component, GizmoType gizmoType)
+        {
+            if (component == null) throw new ArgumentNullException(nameof(component));
+
+            bool enabled = component.isActiveAndEnabled
+                           || ToolManager.activeToolType == typeof(NavMeshBuilderComponentEditorToolSize)
+                           || ToolManager.activeToolType == typeof(NavMeshBuilderComponentEditorToolCenter);
+
+            NavMeshEditorInternalUtility.DrawGizmoBoundsWire(component.transform, component.Center, component.Size, enabled);
         }
     }
 }
