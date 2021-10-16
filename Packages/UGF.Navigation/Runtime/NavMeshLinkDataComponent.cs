@@ -7,11 +7,11 @@ namespace UGF.Navigation.Runtime
     [AddComponentMenu("Unity Game Framework/Navigation/NavMesh Link Data", 2000)]
     public class NavMeshLinkDataComponent : MonoBehaviour
     {
+        [SerializeField] private bool m_addOnStart;
         [SerializeField] private NavMeshLinkComponent m_data;
-        [SerializeField] private bool m_auto;
 
+        public bool AddOnStart { get { return m_addOnStart; } set { m_addOnStart = value; } }
         public NavMeshLinkComponent Data { get { return m_data; } set { m_data = value; } }
-        public bool Auto { get { return m_auto; } set { m_auto = value; } }
         public NavMeshLinkInstance Instance { get { return m_instance ?? throw new ArgumentException("Value not specified."); } }
         public bool HasInstance { get { return m_instance != null; } }
 
@@ -40,20 +40,17 @@ namespace UGF.Navigation.Runtime
             return false;
         }
 
-        private void OnEnable()
+        private void Start()
         {
-            if (m_auto && m_instance == null)
+            if (m_addOnStart)
             {
                 Add();
             }
         }
 
-        private void OnDisable()
+        private void OnDestroy()
         {
-            if (m_auto)
-            {
-                Remove();
-            }
+            Remove();
         }
     }
 }
