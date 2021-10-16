@@ -590,7 +590,7 @@ MonoBehaviour:
   m_defaultArea: 0
   m_collectType: 0
   m_markups: []
-  m_center: {x: 0.031871498, y: -0.006222278, z: 0.40729117}
+  m_center: {x: -0.23293343, y: -0.20481727, z: 0.4199445}
   m_size: {x: 1.5215173, y: 1.5553243, z: 1.3663483}
 --- !u!4 &1442037552
 Transform:
