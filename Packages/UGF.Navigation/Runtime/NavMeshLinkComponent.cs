@@ -38,13 +38,5 @@ namespace UGF.Navigation.Runtime
                 bidirectional = m_bidirectional
             };
         }
-
-        private void OnDrawGizmos()
-        {
-            Gizmos.color = Color.magenta;
-            Gizmos.matrix = transform.localToWorldMatrix;
-            Gizmos.DrawCube(m_start, Vector3.one * 0.1F);
-            Gizmos.DrawCube(m_end, Vector3.one * 0.1F);
-        }
     }
 }
