@@ -19,7 +19,7 @@ namespace UGF.Navigation.Editor
         }
 
         [DrawGizmo(GizmoType.InSelectionHierarchy)]
-        private static void OnDrawGizmosSelected(NavMeshBuilderComponent component, GizmoType gizmoType)
+        private static void OnDrawGizmosSelection(NavMeshBuilderComponent component, GizmoType gizmoType)
         {
             bool enabled = component.isActiveAndEnabled
                            || ToolManager.activeToolType == typeof(NavMeshBuilderComponentEditorToolSize)
