@@ -6,18 +6,18 @@ using UnityEngine;
 
 namespace UGF.Navigation.Editor.EditorTools
 {
-    internal class ComponentBoundsSizeEditorTool : ComponentEditorTool
+    internal abstract class ComponentBoundsSizeEditorTool : ComponentEditorTool
     {
         public string CenterPropertyName { get; }
         public string SizePropertyName { get; }
         public BoxBoundsHandle Handle { get; } = new BoxBoundsHandle();
         public override GUIContent toolbarIcon { get { return ComponentEditorToolUtility.EditSizeContent; } }
 
-        public ComponentBoundsSizeEditorTool() : this("m_center", "m_size")
+        protected ComponentBoundsSizeEditorTool() : this("m_center", "m_size")
         {
         }
 
-        public ComponentBoundsSizeEditorTool(string centerPropertyName, string sizePropertyName)
+        protected ComponentBoundsSizeEditorTool(string centerPropertyName, string sizePropertyName)
         {
             if (string.IsNullOrEmpty(centerPropertyName)) throw new ArgumentException("Value cannot be null or empty.", nameof(centerPropertyName));
             if (string.IsNullOrEmpty(sizePropertyName)) throw new ArgumentException("Value cannot be null or empty.", nameof(sizePropertyName));
@@ -26,14 +26,17 @@ namespace UGF.Navigation.Editor.EditorTools
             SizePropertyName = sizePropertyName;
         }
 
+        protected abstract Matrix4x4 OnGetMatrix();
+
         protected override void OnToolGUI()
         {
             using (new SerializedObjectUpdateScope(SerializedObject))
             {
                 SerializedProperty propertyCenter = SerializedObject.FindProperty(CenterPropertyName);
                 SerializedProperty propertySize = SerializedObject.FindProperty(SizePropertyName);
+                Matrix4x4 matrix = OnGetMatrix();
 
-                using (new Handles.DrawingScope(Component.transform.localToWorldMatrix))
+                using (new Handles.DrawingScope(matrix))
                 {
                     Handle.center = propertyCenter.vector3Value;
                     Handle.size = propertySize.vector3Value;
