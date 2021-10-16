@@ -34,7 +34,7 @@ namespace UGF.Navigation.Editor.EditorTools
         {
             base.OnToolGUI(window);
 
-            if (Event.current.type == EventType.Repaint && m_serializedObject != null && m_component != null)
+            if (m_serializedObject != null && m_component != null)
             {
                 OnToolRepaint();
             }
