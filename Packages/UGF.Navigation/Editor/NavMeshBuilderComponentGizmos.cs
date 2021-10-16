@@ -1,7 +1,7 @@
-﻿using System;
-using UGF.Navigation.Runtime;
+﻿using UGF.Navigation.Runtime;
 using UnityEditor;
 using UnityEditor.EditorTools;
+using UnityEngine;
 
 namespace UGF.Navigation.Editor
 {
@@ -10,24 +10,28 @@ namespace UGF.Navigation.Editor
         [DrawGizmo(GizmoType.Active)]
         private static void OnDrawGizmosActive(NavMeshBuilderComponent component, GizmoType gizmoType)
         {
-            if (component == null) throw new ArgumentNullException(nameof(component));
-
             if (ToolManager.activeToolType == typeof(NavMeshBuilderComponentEditorToolSize))
             {
-                NavMeshEditorInternalUtility.DrawGizmoBoundsBox(component.transform, component.Center, component.Size);
+                Vector3 size = Vector3.Scale(component.Size, component.transform.localScale);
+
+                Gizmos.color = NavMeshEditorUtility.HandlersSolidColor;
+                Gizmos.matrix = Matrix4x4.TRS(component.transform.position, component.transform.rotation, component.transform.localScale);
+                Gizmos.DrawCube(component.Center, size * -1F);
             }
         }
 
         [DrawGizmo(GizmoType.InSelectionHierarchy)]
         private static void OnDrawGizmosSelected(NavMeshBuilderComponent component, GizmoType gizmoType)
         {
-            if (component == null) throw new ArgumentNullException(nameof(component));
-
             bool enabled = component.isActiveAndEnabled
                            || ToolManager.activeToolType == typeof(NavMeshBuilderComponentEditorToolSize)
                            || ToolManager.activeToolType == typeof(NavMeshBuilderComponentEditorToolCenter);
 
-            NavMeshEditorInternalUtility.DrawGizmoBoundsWire(component.transform, component.Center, component.Size, enabled);
+            Vector3 size = Vector3.Scale(component.Size, component.transform.localScale);
+
+            Gizmos.color = enabled ? NavMeshEditorUtility.HandlersEnabledColor : NavMeshEditorUtility.HandlersDisabledColor;
+            Gizmos.matrix = Matrix4x4.TRS(component.transform.position, component.transform.rotation, component.transform.localScale);
+            Gizmos.DrawWireCube(component.Center, size);
         }
     }
 }

@@ -5,43 +5,35 @@ using UnityEngine;
 
 namespace UGF.Navigation.Editor.EditorTools
 {
-    internal class ComponentBoundsCenterEditorTool : ComponentEditorTool
+    internal abstract class ComponentBoundsCenterEditorTool : ComponentEditorTool
     {
         public string CenterPropertyName { get; }
         public override GUIContent toolbarIcon { get { return ComponentEditorToolUtility.EditCenterContent; } }
 
-        public ComponentBoundsCenterEditorTool() : this("m_center")
+        protected ComponentBoundsCenterEditorTool() : this("m_center")
         {
         }
 
-        public ComponentBoundsCenterEditorTool(string centerPropertyName)
+        protected ComponentBoundsCenterEditorTool(string centerPropertyName)
         {
             if (string.IsNullOrEmpty(centerPropertyName)) throw new ArgumentException("Value cannot be null or empty.", nameof(centerPropertyName));
 
             CenterPropertyName = centerPropertyName;
         }
 
-        protected override void OnToolRepaint()
+        protected abstract Matrix4x4 OnGetMatrix();
+
+        protected override void OnToolGUI()
         {
             using (new SerializedObjectUpdateScope(SerializedObject))
             {
                 SerializedProperty propertyCenter = SerializedObject.FindProperty(CenterPropertyName);
+                Matrix4x4 matrix = OnGetMatrix();
+                Vector3 position = matrix.MultiplyPoint3x4(propertyCenter.vector3Value);
 
-                if (Tools.pivotRotation == PivotRotation.Local)
-                {
-                    using (new Handles.DrawingScope(Component.transform.localToWorldMatrix))
-                    {
-                        propertyCenter.vector3Value = Handles.PositionHandle(propertyCenter.vector3Value, Quaternion.identity);
-                    }
-                }
-                else
-                {
-                    Vector3 position = Component.transform.TransformPoint(propertyCenter.vector3Value);
+                position = Handles.PositionHandle(position, Component.transform.rotation);
 
-                    position = Handles.PositionHandle(position, Quaternion.identity);
-
-                    propertyCenter.vector3Value = Component.transform.InverseTransformPoint(position);
-                }
+                propertyCenter.vector3Value = matrix.inverse.MultiplyPoint3x4(position);
             }
         }
     }

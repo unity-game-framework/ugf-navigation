@@ -26,7 +26,7 @@ namespace UGF.Navigation.Editor.EditorTools
             SizePropertyName = sizePropertyName;
         }
 
-        protected override void OnToolRepaint()
+        protected override void OnToolGUI()
         {
             using (new SerializedObjectUpdateScope(SerializedObject))
             {
