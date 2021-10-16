@@ -34,16 +34,16 @@ namespace UGF.Navigation.Editor.EditorTools
         {
             base.OnToolGUI(window);
 
-            if (Selection.activeGameObject == Component.gameObject)
+            if (m_serializedObject != null && m_component != null)
             {
-                if (m_serializedObject != null && m_component != null)
+                if (Selection.activeGameObject == m_component.gameObject)
                 {
                     OnToolGUI();
                 }
-            }
-            else
-            {
-                ToolManager.RestorePreviousPersistentTool();
+                else
+                {
+                    ToolManager.RestorePreviousPersistentTool();
+                }
             }
         }
 
