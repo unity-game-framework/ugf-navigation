@@ -208,10 +208,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c685c3e5d19e4aadb1b4bbe280ea9eb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_buildOnStart: 1
   m_center: {x: 0.000049591064, y: 2.3715804, z: 0.00005531311}
   m_size: {x: 10, y: 6.6936083, z: 9.999999}
   m_agentId: 0
-  m_auto: 1
   m_data: {fileID: 952546}
   m_collects:
   - {fileID: 952545}
@@ -997,10 +997,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c685c3e5d19e4aadb1b4bbe280ea9eb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_buildOnStart: 1
   m_center: {x: 0, y: 0, z: 0}
   m_size: {x: 10, y: 10, z: 10}
   m_agentId: 0
-  m_auto: 1
   m_data: {fileID: 627754206}
   m_collects:
   - {fileID: 627754207}
@@ -1138,10 +1138,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c685c3e5d19e4aadb1b4bbe280ea9eb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_buildOnStart: 1
   m_center: {x: 0.000056925885, y: 0, z: -0.00004501636}
   m_size: {x: 10, y: 10, z: 10}
   m_agentId: 0
-  m_auto: 1
   m_data: {fileID: 629137958}
   m_collects:
   - {fileID: 629137957}
@@ -1457,10 +1457,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c685c3e5d19e4aadb1b4bbe280ea9eb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_buildOnStart: 0
   m_center: {x: 18.467678, y: -2.9043956, z: -12.960763}
   m_size: {x: 14.425795, y: 10.000001, z: 25.809954}
   m_agentId: 0
-  m_auto: 1
   m_data: {fileID: 880369057}
   m_collects:
   - {fileID: 880369055}
@@ -2368,10 +2368,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c685c3e5d19e4aadb1b4bbe280ea9eb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_buildOnStart: 0
   m_center: {x: 0, y: 0, z: 0}
   m_size: {x: 1, y: 1, z: 1}
   m_agentId: 0
-  m_auto: 0
   m_data: {fileID: 0}
   m_collects: []
 --- !u!4 &2080156520

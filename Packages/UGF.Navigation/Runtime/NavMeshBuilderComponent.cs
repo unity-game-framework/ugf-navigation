@@ -8,18 +8,18 @@ namespace UGF.Navigation.Runtime
     [AddComponentMenu("Unity Game Framework/Navigation/NavMesh Builder", 2000)]
     public class NavMeshBuilderComponent : MonoBehaviour
     {
+        [SerializeField] private bool m_buildOnStart;
         [SerializeField] private Vector3 m_center;
         [SerializeField] private Vector3 m_size = Vector3.one;
         [NavMeshAgentId]
         [SerializeField] private int m_agentId;
-        [SerializeField] private bool m_auto;
         [SerializeField] private NavMeshDataComponent m_data;
         [SerializeField] private List<NavMeshCollectComponent> m_collects = new List<NavMeshCollectComponent>();
 
+        public bool BuildOnStart { get { return m_buildOnStart; } set { m_buildOnStart = value; } }
         public Vector3 Center { get { return m_center; } set { m_center = value; } }
         public Vector3 Size { get { return m_size; } set { m_size = value; } }
         public int AgentId { get { return m_agentId; } set { m_agentId = value; } }
-        public bool Auto { get { return m_auto; } set { m_auto = value; } }
         public NavMeshDataComponent Data { get { return m_data; } set { m_data = value; } }
         public List<NavMeshCollectComponent> Collects { get { return m_collects; } }
 
@@ -82,20 +82,17 @@ namespace UGF.Navigation.Runtime
             }
         }
 
-        private void OnEnable()
+        private void Start()
         {
-            if (m_auto)
+            if (m_buildOnStart)
             {
                 Build();
             }
         }
 
-        private void OnDisable()
+        private void OnDestroy()
         {
-            if (m_auto)
-            {
-                Clear();
-            }
+            Clear();
         }
     }
 }
