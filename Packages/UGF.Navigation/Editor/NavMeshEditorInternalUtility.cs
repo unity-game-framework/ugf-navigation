@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using UGF.Navigation.Runtime;
 using UnityEditor;
 using UnityEngine;
@@ -30,6 +31,18 @@ namespace UGF.Navigation.Editor
             Handles.DrawLine(position + new Vector3(-radius, height - radius, 0F), position + new Vector3(-radius, -(height - radius), 0F));
             Handles.DrawLine(position + new Vector3(0F, height - radius, radius), position + new Vector3(0F, -(height - radius), radius));
             Handles.DrawLine(position + new Vector3(0F, height - radius, -radius), position + new Vector3(0F, -(height - radius), -radius));
+        }
+
+        public static string OpenDirectorySelectionInAssets()
+        {
+            string directoryData = Path.GetDirectoryName(Application.dataPath);
+            string directory = EditorUtility.OpenFolderPanel("Select Directory", "Assets", string.Empty);
+
+            directory = !string.IsNullOrEmpty(directoryData)
+                ? directory.Substring(directoryData.Length + 1, directory.Length - directoryData.Length - 1)
+                : directory;
+
+            return directory;
         }
     }
 }
