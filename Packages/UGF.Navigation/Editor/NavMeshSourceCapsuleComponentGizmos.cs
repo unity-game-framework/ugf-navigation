@@ -12,9 +12,15 @@ namespace UGF.Navigation.Editor
         {
             if (ToolManager.activeToolType == typeof(NavMeshSourceCapsuleComponentEditorToolSize))
             {
+                float offset = component.Height * 0.5F - component.Radius;
+
                 Gizmos.color = NavMeshEditorUtility.HandlersSolidColor;
-                Gizmos.matrix = component.transform.localToWorldMatrix * Matrix4x4.TRS(component.Center, Quaternion.identity, new Vector3(component.Radius * -1F, component.Height * -0.25F, component.Radius * -1F));
-                Gizmos.DrawMesh(Resources.GetBuiltinResource<Mesh>("Capsule.fbx"));
+                Gizmos.matrix = component.transform.localToWorldMatrix * Matrix4x4.TRS(component.Center, Quaternion.identity, new Vector3(component.Radius, offset, component.Radius) * -1F);
+                Gizmos.DrawMesh(Resources.GetBuiltinResource<Mesh>("Cylinder.fbx"));
+                Gizmos.matrix = component.transform.localToWorldMatrix * Matrix4x4.TRS(component.Center + Vector3.up * offset, Quaternion.identity, Vector3.one * component.Radius * -1F);
+                Gizmos.DrawMesh(Resources.GetBuiltinResource<Mesh>("Sphere.fbx"));
+                Gizmos.matrix = component.transform.localToWorldMatrix * Matrix4x4.TRS(component.Center - Vector3.up * offset, Quaternion.identity, Vector3.one * component.Radius * -1F);
+                Gizmos.DrawMesh(Resources.GetBuiltinResource<Mesh>("Sphere.fbx"));
             }
         }
 
