@@ -12,14 +12,14 @@ namespace UGF.Navigation.Runtime
         [SerializeField] private Vector3 m_center;
         [SerializeField] private Vector3 m_size = Vector3.one;
         [NavMeshAgentId]
-        [SerializeField] private int m_agentId;
+        [SerializeField] private int m_agent;
         [SerializeField] private NavMeshDataComponent m_data;
         [SerializeField] private List<NavMeshCollectComponent> m_collects = new List<NavMeshCollectComponent>();
 
         public bool BuildOnStart { get { return m_buildOnStart; } set { m_buildOnStart = value; } }
         public Vector3 Center { get { return m_center; } set { m_center = value; } }
         public Vector3 Size { get { return m_size; } set { m_size = value; } }
-        public int AgentId { get { return m_agentId; } set { m_agentId = value; } }
+        public int Agent { get { return m_agent; } set { m_agent = value; } }
         public NavMeshDataComponent Data { get { return m_data; } set { m_data = value; } }
         public List<NavMeshCollectComponent> Collects { get { return m_collects; } }
 
@@ -48,7 +48,7 @@ namespace UGF.Navigation.Runtime
 
         public NavMeshData BuildData()
         {
-            NavMeshBuildSettings settings = NavMesh.GetSettingsByID(m_agentId);
+            NavMeshBuildSettings settings = NavMesh.GetSettingsByID(m_agent);
             List<NavMeshBuildSource> sources = CollectSources();
             Vector3 center = Vector3.Scale(m_center, transform.localScale);
             Vector3 size = Vector3.Scale(m_size, transform.localScale);

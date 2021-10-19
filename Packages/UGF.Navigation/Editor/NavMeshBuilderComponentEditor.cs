@@ -12,7 +12,7 @@ namespace UGF.Navigation.Editor
         private SerializedProperty m_propertyBuildOnStart;
         private SerializedProperty m_propertyCenter;
         private SerializedProperty m_propertySize;
-        private SerializedProperty m_propertyAgentId;
+        private SerializedProperty m_propertyAgent;
         private SerializedProperty m_propertyData;
         private ReorderableListDrawer m_listCollects;
 
@@ -21,7 +21,7 @@ namespace UGF.Navigation.Editor
             m_propertyBuildOnStart = serializedObject.FindProperty("m_buildOnStart");
             m_propertyCenter = serializedObject.FindProperty("m_center");
             m_propertySize = serializedObject.FindProperty("m_size");
-            m_propertyAgentId = serializedObject.FindProperty("m_agentId");
+            m_propertyAgent = serializedObject.FindProperty("m_agent");
             m_propertyData = serializedObject.FindProperty("m_data");
             m_listCollects = new ReorderableListDrawer(serializedObject.FindProperty("m_collects"));
             m_listCollects.Enable();
@@ -45,7 +45,7 @@ namespace UGF.Navigation.Editor
 
                 EditorGUILayout.PropertyField(m_propertyCenter);
                 EditorGUILayout.PropertyField(m_propertySize);
-                EditorGUILayout.PropertyField(m_propertyAgentId);
+                EditorGUILayout.PropertyField(m_propertyAgent);
                 EditorGUILayout.PropertyField(m_propertyData);
 
                 m_listCollects.DrawGUILayout();

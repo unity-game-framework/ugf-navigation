@@ -10,7 +10,7 @@ namespace UGF.Navigation.Runtime
         [NavMeshArea]
         [SerializeField] private int m_area;
         [NavMeshAgentId]
-        [SerializeField] private int m_agentType;
+        [SerializeField] private int m_agent;
         [SerializeField] private Vector3 m_start;
         [SerializeField] private Vector3 m_end = Vector3.forward;
         [SerializeField] private float m_width = 1F;
@@ -18,7 +18,7 @@ namespace UGF.Navigation.Runtime
         [SerializeField] private bool m_bidirectional = true;
 
         public int Area { get { return m_area; } set { m_area = value; } }
-        public int AgentType { get { return m_agentType; } set { m_agentType = value; } }
+        public int Agent { get { return m_agent; } set { m_agent = value; } }
         public Vector3 Start { get { return m_start; } set { m_start = value; } }
         public Vector3 End { get { return m_end; } set { m_end = value; } }
         public float Width { get { return m_width; } set { m_width = value; } }
@@ -30,7 +30,7 @@ namespace UGF.Navigation.Runtime
             return new NavMeshLinkData
             {
                 area = m_area,
-                agentTypeID = m_agentType,
+                agentTypeID = m_agent,
                 startPosition = transform.TransformPoint(m_start),
                 endPosition = transform.TransformPoint(m_end),
                 width = m_width,
