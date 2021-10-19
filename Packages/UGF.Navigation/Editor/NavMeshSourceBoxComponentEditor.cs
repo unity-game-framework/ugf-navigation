@@ -9,6 +9,7 @@ namespace UGF.Navigation.Editor
     [CustomEditor(typeof(NavMeshSourceBoxComponent), true)]
     internal class NavMeshSourceBoxComponentEditor : UnityEditor.Editor
     {
+        private readonly GUIContent m_contentEdit = new GUIContent("Edit Shape");
         private SerializedProperty m_propertyArea;
         private SerializedProperty m_propertyCenter;
         private SerializedProperty m_propertySize;
@@ -28,7 +29,7 @@ namespace UGF.Navigation.Editor
 
                 EditorGUILayout.PropertyField(m_propertyArea);
 
-                EditorGUILayout.EditorToolbarForTarget(new GUIContent("Edit Shape"), target);
+                EditorGUILayout.EditorToolbarForTarget(m_contentEdit, target);
                 EditorGUILayout.Space(EditorGUIUtility.standardVerticalSpacing);
 
                 EditorGUILayout.PropertyField(m_propertyCenter);

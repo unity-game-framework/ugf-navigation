@@ -9,6 +9,7 @@ namespace UGF.Navigation.Editor
     [CustomEditor(typeof(NavMeshCollectVolumeComponent), true)]
     internal class NavMeshCollectVolumeComponentEditor : UnityEditor.Editor
     {
+        private readonly GUIContent m_contentEdit = new GUIContent("Edit Bounds");
         private SerializedProperty m_propertyCenter;
         private SerializedProperty m_propertySize;
         private SerializedProperty m_propertyLayerMask;
@@ -38,7 +39,7 @@ namespace UGF.Navigation.Editor
             {
                 EditorIMGUIUtility.DrawScriptProperty(serializedObject);
 
-                EditorGUILayout.EditorToolbarForTarget(new GUIContent("Edit Bounds"), target);
+                EditorGUILayout.EditorToolbarForTarget(m_contentEdit, target);
                 EditorGUILayout.Space(EditorGUIUtility.standardVerticalSpacing);
 
                 EditorGUILayout.PropertyField(m_propertyCenter);

@@ -9,6 +9,7 @@ namespace UGF.Navigation.Editor
     [CustomEditor(typeof(NavMeshBuilderComponent), true)]
     internal class NavMeshBuilderComponentEditor : UnityEditor.Editor
     {
+        private readonly GUIContent m_contentEdit = new GUIContent("Edit Bounds");
         private SerializedProperty m_propertyBuildOnStart;
         private SerializedProperty m_propertyCenter;
         private SerializedProperty m_propertySize;
@@ -40,7 +41,7 @@ namespace UGF.Navigation.Editor
 
                 EditorGUILayout.PropertyField(m_propertyBuildOnStart);
 
-                EditorGUILayout.EditorToolbarForTarget(new GUIContent("Edit Bounds"), target);
+                EditorGUILayout.EditorToolbarForTarget(m_contentEdit, target);
                 EditorGUILayout.Space(EditorGUIUtility.standardVerticalSpacing);
 
                 EditorGUILayout.PropertyField(m_propertyCenter);

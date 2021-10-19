@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace UGF.Navigation.Editor
 {
-    [EditorTool(ComponentEditorToolUtility.EDIT_CENTER_NAME, typeof(NavMeshSourceModifierBoxComponent))]
+    [EditorTool(ComponentEditorToolUtility.EDIT_SIZE_NAME, typeof(NavMeshSourceModifierBoxComponent))]
     internal class NavMeshSourceModifierBoxComponentEditorToolSize : ComponentBoundsSizeEditorTool
     {
         public NavMeshSourceModifierBoxComponentEditorToolSize()
