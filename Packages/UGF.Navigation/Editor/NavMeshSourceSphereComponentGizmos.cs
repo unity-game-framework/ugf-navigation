@@ -13,8 +13,8 @@ namespace UGF.Navigation.Editor
             if (ToolManager.activeToolType == typeof(NavMeshSourceSphereComponentEditorToolSize))
             {
                 Gizmos.color = NavMeshEditorUtility.HandlersSolidColor;
-                Gizmos.matrix = component.transform.localToWorldMatrix;
-                Gizmos.DrawSphere(component.Center, component.Radius * -1F);
+                Gizmos.matrix = component.transform.localToWorldMatrix * Matrix4x4.TRS(component.Center, Quaternion.identity, Vector3.one * component.Radius * -1F);
+                Gizmos.DrawMesh(Resources.GetBuiltinResource<Mesh>("Sphere.fbx"));
             }
         }
 

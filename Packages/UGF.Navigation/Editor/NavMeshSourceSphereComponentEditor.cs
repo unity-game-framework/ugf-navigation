@@ -36,5 +36,15 @@ namespace UGF.Navigation.Editor
                 EditorGUILayout.PropertyField(m_propertyRadius);
             }
         }
+
+        private bool HasFrameBounds()
+        {
+            return true;
+        }
+
+        private Bounds OnGetFrameBounds()
+        {
+            return NavMeshEditorInternalUtility.GetTargetWorldBounds(target, m_propertyCenter.vector3Value, Vector3.one * m_propertyRadius.floatValue * 2F);
+        }
     }
 }
