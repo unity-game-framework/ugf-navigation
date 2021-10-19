@@ -196,8 +196,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f29e042418e046118a8a158466888764, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_addOnStart: 0
-  m_data: {fileID: 0}
+  m_addOnStart: 1
+  m_data: {fileID: 23800000, guid: 4e051aaf1c2dd6f41ace5f2951dbd055, type: 2}
 --- !u!114 &952547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,7 +210,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c685c3e5d19e4aadb1b4bbe280ea9eb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_buildOnStart: 1
+  m_buildOnStart: 0
   m_center: {x: 0.000049591064, y: 0.56938934, z: 0.00005531311}
   m_size: {x: 10, y: 10.297991, z: 9.999999}
   m_agent: 0
@@ -521,7 +521,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!64 &120217724
 MeshCollider:
@@ -999,7 +999,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c685c3e5d19e4aadb1b4bbe280ea9eb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_buildOnStart: 1
+  m_buildOnStart: 0
   m_center: {x: 0, y: 0, z: 0}
   m_size: {x: 10, y: 10, z: 10}
   m_agent: -1372625422
@@ -1036,8 +1036,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f29e042418e046118a8a158466888764, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_addOnStart: 0
-  m_data: {fileID: 0}
+  m_addOnStart: 1
+  m_data: {fileID: 23800000, guid: e5474efc8fa25234195ad10aec1dd665, type: 2}
 --- !u!114 &627754207
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1126,8 +1126,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f29e042418e046118a8a158466888764, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_addOnStart: 0
-  m_data: {fileID: 0}
+  m_addOnStart: 1
+  m_data: {fileID: 23800000, guid: 5a3731b3f2f74044cacd0bc9e29cebdf, type: 2}
 --- !u!114 &629137959
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1140,7 +1140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c685c3e5d19e4aadb1b4bbe280ea9eb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_buildOnStart: 1
+  m_buildOnStart: 0
   m_center: {x: 0.000056925885, y: 0, z: -0.00004501636}
   m_size: {x: 10, y: 10, z: 10}
   m_agent: 0
