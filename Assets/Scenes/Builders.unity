@@ -1510,7 +1510,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &945031947
 SphereCollider:
@@ -1565,12 +1565,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 986886490}
-  m_LocalRotation: {x: -0.70710677, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -18.86, y: 0.41, z: 3.63}
+  m_LocalRotation: {x: -0.70710677, y: 0.0000000046566124, z: 0.000000004423782, w: 0.7071068}
+  m_LocalPosition: {x: -18.86, y: 0.40999988, z: 3.6299996}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!114 &986886492
 MonoBehaviour:
@@ -1585,9 +1585,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_area: 0
-  m_center: {x: 0, y: 0, z: 0}
-  m_radius: 1
-  m_height: 5
+  m_center: {x: 0.5275078, y: -1.0293307, z: 0}
+  m_radius: 1.5275078
+  m_height: 7.514639
 --- !u!136 &986886493
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1599,7 +1599,7 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 1
-  m_Height: 5
+  m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1130248048
