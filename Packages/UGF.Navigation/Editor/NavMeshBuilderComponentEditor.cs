@@ -98,28 +98,43 @@ namespace UGF.Navigation.Editor
         private void OnBuild()
         {
             var dataComponent = (NavMeshDataComponent)m_propertyData.objectReferenceValue;
+            string assetPath = string.Empty;
 
             if (dataComponent.Data != null)
             {
+                assetPath = AssetDatabase.GetAssetPath(dataComponent.Data);
+
                 OnClear();
             }
 
             NavMeshData data = m_component.BuildData();
 
-            Undo.RegisterCompleteObjectUndo(dataComponent, "Create NavMesh Data");
-            Undo.RegisterCreatedObjectUndo(data, "Create NavMesh Data");
+            if (string.IsNullOrEmpty(assetPath))
+            {
+                string directory = NavMeshEditorInternalUtility.OpenDirectorySelectionInAssets();
 
-            dataComponent.Data = data;
+                if (AssetDatabase.IsValidFolder(directory))
+                {
+                    assetPath = AssetDatabase.GenerateUniqueAssetPath($"{directory}/NavMeshData.asset");
+                }
+            }
+
+            if (!string.IsNullOrEmpty(assetPath))
+            {
+                AssetDatabase.CreateAsset(data, assetPath);
+
+                Undo.RegisterCompleteObjectUndo(dataComponent, "Create NavMesh Data");
+                Undo.RegisterCreatedObjectUndo(data, "Create NavMesh Data");
+
+                dataComponent.Data = data;
+            }
         }
 
         private void OnClear()
         {
             var dataComponent = (NavMeshDataComponent)m_propertyData.objectReferenceValue;
 
-            NavMeshData data = dataComponent.Data;
-
             Undo.RegisterCompleteObjectUndo(dataComponent, "Clear NavMesh Data");
-            Undo.DestroyObjectImmediate(data);
 
             dataComponent.Data = null;
         }
