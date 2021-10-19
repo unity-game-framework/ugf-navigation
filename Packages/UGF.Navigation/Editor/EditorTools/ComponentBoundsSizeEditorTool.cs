@@ -41,10 +41,16 @@ namespace UGF.Navigation.Editor.EditorTools
                     Handle.center = propertyCenter.vector3Value;
                     Handle.size = propertySize.vector3Value;
 
-                    Handle.DrawHandle();
+                    using (var scope = new EditorGUI.ChangeCheckScope())
+                    {
+                        Handle.DrawHandle();
 
-                    propertyCenter.vector3Value = Handle.center;
-                    propertySize.vector3Value = Handle.size;
+                        if (scope.changed)
+                        {
+                            propertyCenter.vector3Value = Handle.center;
+                            propertySize.vector3Value = Handle.size;
+                        }
+                    }
                 }
             }
         }

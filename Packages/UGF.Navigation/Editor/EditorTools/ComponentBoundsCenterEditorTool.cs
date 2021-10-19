@@ -32,9 +32,15 @@ namespace UGF.Navigation.Editor.EditorTools
                 Vector3 position = matrix.MultiplyPoint3x4(propertyCenter.vector3Value);
                 Quaternion rotation = Tools.pivotRotation == PivotRotation.Local ? Component.transform.rotation : Quaternion.identity;
 
-                position = Handles.PositionHandle(position, rotation);
+                using (var scope = new EditorGUI.ChangeCheckScope())
+                {
+                    position = Handles.PositionHandle(position, rotation);
 
-                propertyCenter.vector3Value = matrix.inverse.MultiplyPoint3x4(position);
+                    if (scope.changed)
+                    {
+                        propertyCenter.vector3Value = matrix.inverse.MultiplyPoint3x4(position);
+                    }
+                }
             }
         }
     }
