@@ -3,6 +3,7 @@ using UGF.EditorTools.Editor.IMGUI.Scopes;
 using UGF.Navigation.Runtime;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace UGF.Navigation.Editor
 {
@@ -16,6 +17,7 @@ namespace UGF.Navigation.Editor
         private SerializedProperty m_propertyAgent;
         private SerializedProperty m_propertyData;
         private ReorderableListDrawer m_listCollects;
+        private NavMeshBuilderComponent m_component;
 
         private void OnEnable()
         {
@@ -26,6 +28,7 @@ namespace UGF.Navigation.Editor
             m_propertyData = serializedObject.FindProperty("m_data");
             m_listCollects = new ReorderableListDrawer(serializedObject.FindProperty("m_collects"));
             m_listCollects.Enable();
+            m_component = (NavMeshBuilderComponent)target;
         }
 
         private void OnDisable()
@@ -50,6 +53,35 @@ namespace UGF.Navigation.Editor
                 EditorGUILayout.PropertyField(m_propertyData);
 
                 m_listCollects.DrawGUILayout();
+
+                EditorGUILayout.Space();
+
+                using (new EditorGUILayout.HorizontalScope())
+                {
+                    GUILayout.FlexibleSpace();
+
+                    using (new EditorGUI.DisabledScope(m_propertyData.objectReferenceValue == null))
+                    {
+                        var dataComponent = (NavMeshDataComponent)m_propertyData.objectReferenceValue;
+
+                        using (new EditorGUI.DisabledScope(dataComponent == null || dataComponent.Data == null))
+                        {
+                            if (GUILayout.Button("Clear", GUILayout.Width(75F)))
+                            {
+                                OnClear();
+                            }
+                        }
+
+                        if (GUILayout.Button("Build", GUILayout.Width(75F)))
+                        {
+                            OnBuild();
+                        }
+                    }
+
+                    EditorGUILayout.Space();
+                }
+
+                EditorGUILayout.Space();
             }
         }
 
@@ -61,6 +93,35 @@ namespace UGF.Navigation.Editor
         private Bounds OnGetFrameBounds()
         {
             return NavMeshEditorInternalUtility.GetTargetWorldBounds(target, m_propertyCenter.vector3Value, m_propertySize.vector3Value);
+        }
+
+        private void OnBuild()
+        {
+            var dataComponent = (NavMeshDataComponent)m_propertyData.objectReferenceValue;
+
+            if (dataComponent.Data != null)
+            {
+                OnClear();
+            }
+
+            NavMeshData data = m_component.BuildData();
+
+            Undo.RegisterCompleteObjectUndo(dataComponent, "Create NavMesh Data");
+            Undo.RegisterCreatedObjectUndo(data, "Create NavMesh Data");
+
+            dataComponent.Data = data;
+        }
+
+        private void OnClear()
+        {
+            var dataComponent = (NavMeshDataComponent)m_propertyData.objectReferenceValue;
+
+            NavMeshData data = dataComponent.Data;
+
+            Undo.RegisterCompleteObjectUndo(dataComponent, "Clear NavMesh Data");
+            Undo.DestroyObjectImmediate(data);
+
+            dataComponent.Data = null;
         }
     }
 }
