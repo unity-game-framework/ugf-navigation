@@ -63,7 +63,7 @@ namespace UGF.Navigation.Runtime
 
         private static void OnRender(Camera _)
         {
-            if (m_display && m_triangulation != null)
+            if (Application.isPlaying && m_display && m_triangulation != null)
             {
                 NavMeshUtility.DrawNavMesh(m_triangulation.Value, m_material);
             }
