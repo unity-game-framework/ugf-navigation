@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "com.unity.modules.ai": "1.0.0",
-    "com.ugf.editortools": "2.1.0",
+    "com.ugf.editortools": "2.2.0",
     "com.ugf.builder": "2.0.1"
   }
 }
