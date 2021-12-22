@@ -1,22 +1,17 @@
-﻿using UGF.Navigation.Editor.EditorTools;
+﻿using UGF.EditorTools.Editor.Tools;
 using UGF.Navigation.Runtime;
 using UnityEditor.EditorTools;
 using UnityEngine;
 
 namespace UGF.Navigation.Editor
 {
-    [EditorTool(ComponentEditorToolUtility.EDIT_SIZE_NAME, typeof(NavMeshSourceModifierBoxComponent))]
-    internal class NavMeshSourceModifierBoxComponentEditorToolSize : ComponentBoundsSizeEditorTool
+    [EditorTool(NavMeshEditorUtility.EDIT_SIZE_NAME, typeof(NavMeshSourceModifierBoxComponent))]
+    internal class NavMeshSourceModifierBoxComponentEditorToolSize : ToolComponentBoundsHandleBox
     {
-        public NavMeshSourceModifierBoxComponentEditorToolSize()
+        public NavMeshSourceModifierBoxComponentEditorToolSize() : base("m_center", "m_size")
         {
             Handle.handleColor = NavMeshEditorUtility.HandlersControlColor;
             Handle.wireframeColor = Color.clear;
-        }
-
-        protected override Matrix4x4 OnGetMatrix()
-        {
-            return Component.transform.localToWorldMatrix;
         }
     }
 }
