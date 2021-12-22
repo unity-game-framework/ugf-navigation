@@ -1,4 +1,5 @@
-﻿using UGF.Navigation.Runtime;
+﻿using UGF.EditorTools.Editor.Handle;
+using UGF.Navigation.Runtime;
 using UnityEditor;
 using UnityEditor.EditorTools;
 using UnityEngine;
@@ -36,7 +37,7 @@ namespace UGF.Navigation.Editor
 
             using (new Handles.DrawingScope(Gizmos.color, Gizmos.matrix))
             {
-                NavMeshEditorInternalUtility.DrawWireCapsule(component.Center, component.Radius, component.Height * 0.5F);
+                HandleEditorUtility.DrawWireCapsule(component.Center, component.Radius, component.Height * 0.5F);
             }
         }
     }

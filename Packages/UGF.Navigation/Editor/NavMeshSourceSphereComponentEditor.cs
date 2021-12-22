@@ -44,7 +44,7 @@ namespace UGF.Navigation.Editor
 
         private Bounds OnGetFrameBounds()
         {
-            return NavMeshEditorInternalUtility.GetTargetWorldBounds(target, m_propertyCenter.vector3Value, Vector3.one * m_propertyRadius.floatValue * 2F);
+            return NavMeshEditorUtility.GetTargetWorldBounds(target, m_propertyCenter.vector3Value, Vector3.one * m_propertyRadius.floatValue * 2F);
         }
     }
 }
