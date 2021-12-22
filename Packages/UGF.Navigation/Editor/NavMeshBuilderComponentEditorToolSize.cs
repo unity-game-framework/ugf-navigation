@@ -1,14 +1,14 @@
-﻿using UGF.Navigation.Editor.EditorTools;
+﻿using UGF.EditorTools.Editor.Tools;
 using UGF.Navigation.Runtime;
 using UnityEditor.EditorTools;
 using UnityEngine;
 
 namespace UGF.Navigation.Editor
 {
-    [EditorTool(ComponentEditorToolUtility.EDIT_SIZE_NAME, typeof(NavMeshBuilderComponent))]
-    internal class NavMeshBuilderComponentEditorToolSize : ComponentBoundsSizeEditorTool
+    [EditorTool(NavMeshEditorUtility.EDIT_SIZE_NAME, typeof(NavMeshBuilderComponent))]
+    internal class NavMeshBuilderComponentEditorToolSize : ToolComponentBoundsHandleBox
     {
-        public NavMeshBuilderComponentEditorToolSize()
+        public NavMeshBuilderComponentEditorToolSize() : base("m_center", "m_size")
         {
             Handle.handleColor = NavMeshEditorUtility.HandlersControlColor;
             Handle.wireframeColor = Color.clear;

@@ -1,4 +1,5 @@
-﻿using UGF.EditorTools.Editor.IMGUI;
+﻿using UGF.EditorTools.Editor.Assets;
+using UGF.EditorTools.Editor.IMGUI;
 using UGF.EditorTools.Editor.IMGUI.Scopes;
 using UGF.Navigation.Runtime;
 using UnityEditor;
@@ -92,7 +93,7 @@ namespace UGF.Navigation.Editor
 
         private Bounds OnGetFrameBounds()
         {
-            return NavMeshEditorInternalUtility.GetTargetWorldBounds(target, m_propertyCenter.vector3Value, m_propertySize.vector3Value);
+            return NavMeshEditorUtility.GetTargetWorldBounds(target, m_propertyCenter.vector3Value, m_propertySize.vector3Value);
         }
 
         private void OnBuild()
@@ -111,9 +112,7 @@ namespace UGF.Navigation.Editor
 
             if (string.IsNullOrEmpty(assetPath))
             {
-                string directory = NavMeshEditorInternalUtility.OpenDirectorySelectionInAssets();
-
-                if (AssetDatabase.IsValidFolder(directory))
+                if (AssetsEditorUtility.TrySelectDirectory("Select Directory", "Assets", true, out string directory) && AssetDatabase.IsValidFolder(directory))
                 {
                     assetPath = AssetDatabase.GenerateUniqueAssetPath($"{directory}/NavMeshData.asset");
                 }

@@ -1,16 +1,14 @@
-﻿using UGF.Navigation.Editor.EditorTools;
+﻿using UGF.EditorTools.Editor.Tools;
 using UGF.Navigation.Runtime;
 using UnityEditor.EditorTools;
-using UnityEngine;
 
 namespace UGF.Navigation.Editor
 {
-    [EditorTool(ComponentEditorToolUtility.EDIT_CENTER_NAME, typeof(NavMeshSourceCapsuleComponent))]
-    internal class NavMeshSourceCapsuleComponentEditorToolCenter : ComponentBoundsCenterEditorTool
+    [EditorTool(NavMeshEditorUtility.EDIT_CENTER_NAME, typeof(NavMeshSourceCapsuleComponent))]
+    internal class NavMeshSourceCapsuleComponentEditorToolCenter : ToolComponentHandlePosition
     {
-        protected override Matrix4x4 OnGetMatrix()
+        public NavMeshSourceCapsuleComponentEditorToolCenter() : base("m_center")
         {
-            return Component.transform.localToWorldMatrix;
         }
     }
 }
