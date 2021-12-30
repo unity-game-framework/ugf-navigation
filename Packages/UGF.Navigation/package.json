@@ -3,7 +3,7 @@
   "displayName": "UGF.Navigation",
   "version": "1.0.0-preview.1",
   "unity": "2021.2",
-  "apiCompatibility": ".NET Standard 2.0",
+  "apiCompatibility": ".NET Standard 2.1",
   "description": "Provides utilities to work with Unity Navigation Mesh.",
   "author": {
     "name": "Unity Game Framework",
